@@ -32,6 +32,7 @@ public class App {
       Specialty specialty = Specialty.find(Integer.parseInt(request.queryParams("specialtyId")));
       Doctor newDoctor = new Doctor(name, specialty.getId());
       newDoctor.save();
+      model.put("doctors", Doctor.arrange("name"));
       model.put("template", "templates/doctors.vtl");
       return new ModelAndView(model, layout);
     },new VelocityTemplateEngine());
