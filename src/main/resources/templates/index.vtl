@@ -1,5 +1,25 @@
 <h1>Doctor's Office Administration</h1>
 
+<h2> New Specialty: </h2>
+
+#if($specialties)
+  <p>Click on a specialty to see qualified doctors:</p>
+  <ul>
+    #foreach ($specialty in $specialties)
+      <li><a href="/specialties/$specialty.getId()">$specialty.getName()</a></li>
+    #end
+  </ul>
+#else
+  <p>There are no specialties yet!</p>
+#end
+
+<form action="/specialties" method="post">
+  <div class="form-group">
+    <label for="specialty">Specialty</label>
+    <input id="specialty" name="specialty" type="text" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-success">Add Specialty</button>
+</form>
 <h2> New Doctor: </h2>
 
 #if($doctors)
@@ -16,10 +36,15 @@
 <h2>New Doctor:</h2>
 
 <form action="/doctors" method="post">
+  <label for="specialtyId">Select a Specialty To Add a Doctor To:</label>
+  <select id='specialtyId' name='specialtyId' type='text'>
+    #foreach($specialty in $specialties)
+      <option value="$specialty.getId()">$specialty.getName()</option>
+    #end
+  </select>
+  <br>
   <label for="name">Doctor name</label>
   <input id="name" name="name" type="text">
-  <label for="specialty">Doctor's Specialty</label>
-  <input id="specialty" name="specialty" type="text">
   <button type="submit" class="btn btn-success">Add Doctor</button>
 </form>
 

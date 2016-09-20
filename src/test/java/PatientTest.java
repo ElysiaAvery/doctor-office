@@ -15,8 +15,10 @@ public class PatientTest {
     try(Connection con = DB.sql2o.open()) {
       String deletePatientsQuery = "DELETE FROM patients *;";
       String deleteDoctorsQuery = "DELETE FROM doctors *;";
+      String deleteSpecialtiesQuery = "DELETE FROM specialties *;";
       con.createQuery(deletePatientsQuery).executeUpdate();
       con.createQuery(deleteDoctorsQuery).executeUpdate();
+      con.createQuery(deleteSpecialtiesQuery).executeUpdate();
     }
   }
 
@@ -88,7 +90,7 @@ public class PatientTest {
 
   @Test
   public void save_savesDoctorIdIntoDB_true() {
-    Doctor myDoctor = new Doctor("Ferdinand", "Cardiology");
+    Doctor myDoctor = new Doctor("Ferdinand", 1);
     myDoctor.save();
     Patient myPatient = new Patient("Kim", "1987-10-10", myDoctor.getId());
     myPatient.save();

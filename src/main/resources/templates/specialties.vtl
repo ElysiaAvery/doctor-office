@@ -1,0 +1,9 @@
+<h1>All Specialties</h1>
+
+<ul>
+  #foreach ($specialty  in $specialties)
+    <li><a href="/specialties/$specialty.getId()">$specialty.getName()</a></li>
+  #end
+</ul>
+
+<a href="/">Back To Home Page</a>

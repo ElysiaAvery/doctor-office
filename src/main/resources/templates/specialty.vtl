@@ -1,7 +1,7 @@
-<h1>All Doctors</h1>
+<h1>$specialty.getName()</h1>
 
 <ul>
-  #foreach ($doctor  in $doctors)
+  #foreach ($doctor  in $specialty.getDoctors())
     <li><a href="/doctors/$doctor.getId()">$doctor.getName()</a></li>
   #end
 </ul>
