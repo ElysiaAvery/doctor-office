@@ -1,3 +1,12 @@
-<h1>Doctor's Page</h1>
+<h1>All Doctors</h1>
 
+#if ($doctors)
+  <ul>
+    #foreach ($doctor  in $doctors)
+      <li><a href="/doctors/$doctor.getId()">$doctor.getName()</a></li>
+    #end
+  </ul>
+#else
+  <h2>There are no doctors yet.</h2>
+#end
 <a href="/">Back to Home Page</a>

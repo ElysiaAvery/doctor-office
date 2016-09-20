@@ -1,6 +1,6 @@
 <h1>Doctor's Office Administration</h1>
 
-<h2> All Lists: </h2>
+<h2> New Doctor: </h2>
 
 #if($doctors)
   <p>Click on a doctor to see their patients:</p>
@@ -24,6 +24,16 @@
 </form>
 
 <h2>New Patient:</h2>
+
+#if($patients)
+  <ul>
+    #foreach ($patient in $patients)
+      <li><a href="/patients/$patient.getId()">$patient.getName()</a></li>
+    #end
+  </ul>
+#else
+  <p>There are no patients yet!</p>
+#end
 
 <form action="/patients" method="post">
   <label for="doctorId">Select a Doctor To Add a Patient To:</label>

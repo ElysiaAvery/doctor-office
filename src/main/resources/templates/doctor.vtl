@@ -1,3 +1,12 @@
-<h1>Doctor Page</h1>
+<h1>$doctor.getName()'s Page</h1>
+<h3>Specialty: $doctor.getSpecialty()</h3>
+
+<ul>
+  #foreach ($patient in $doctor.getPatients())
+    <li><a href="/patients/$patient.getId()">$patient.getName()</a></li>
+  #end
+</ul>
 
 <a href="/">Back to Home Page</a>
+<br>
+<a href="/doctors">View All Doctors</a>

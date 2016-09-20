@@ -13,6 +13,7 @@ public class App {
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       model.put("doctors", Doctor.all());
+      model.put("patients", Patient.all());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
@@ -37,6 +38,8 @@ public class App {
     get("/doctors/:id", (request, response) -> {
       Map<String, Object> model = new HashMap<>();
       Doctor doctor = Doctor.find(Integer.parseInt(request.params(":id")));
+      Patient patient = Patient.find(Integer.parseInt(request.params(":id")));
+      model.put("patient", patient);
       model.put("doctor", doctor);
       model.put("template", "templates/doctor.vtl");
       return new ModelAndView(model, layout);

@@ -1,3 +1,9 @@
-<h1>Patient's Page</h1>
+<h1>All Patients</h1>
+
+<ul>
+  #foreach ($patient in $patients)
+    <li><a href="/patients/$patient.getId()">$patient.getName()</a></li>
+  #end
+</ul>
 
 <a href="/">Back to Home Page</a>
