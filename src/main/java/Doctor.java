@@ -24,6 +24,7 @@ public class Doctor {
     }
   }
 
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO doctors (name, specialtyId) VALUES (:name, :specialtyId)";
@@ -72,4 +73,14 @@ public class Doctor {
     return doctor;
     }
   }
+
+  // public static List<Doctor> arrange(String name) {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     String sql = "SELECT * FROM doctors ORDER BY name DESC;";
+  //     List<Doctor> doctor = con.createQuery(sql)
+  //     .addParameter("name", name)
+  //     .executeAndFetchFirst(Doctor.class);
+  //   return doctor;
+  //   }
+  // }
 }
